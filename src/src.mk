@@ -5,6 +5,8 @@
 #
 
 SRC_DIR = src
-SOURCE_FILE =  main.ml
+SOURCE_FILE =  action.mli \
+			   state.ml \
+			   main.ml
 
 SOURCE = $(addprefix $(SRC_DIR)/, $(SOURCE_FILE))
