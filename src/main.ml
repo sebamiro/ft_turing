@@ -53,4 +53,19 @@ let () =
 *)
 
     let json_content = Yojson.Basic.from_file "unary_sub.json" in
-    print_endline (Yojson.Basic.pretty_to_string json_content)
+
+    let open Yojson.Basic.Util in
+    let name = json_content |> member "name" |> to_string in
+    let alphabet = json_content |> member "alphabet" |> to_list |> filter_string in
+    let blank = json_content |> member "blank" |> to_string in
+    let states = json_content |> member "states" |> to_list |> filter_string in
+    let initial = json_content |> member "initial" |> to_string in
+    let finals = json_content |> member "finals" |> to_list |> filter_string in
+    let transitions = json_content |> member "transitions" |> to_list in
+    print_endline (Yojson.Basic.to_string json_content);
+    Printf.printf "\nProgram Name: %s\n" name;
+    Printf.printf "Alphabet: %s\n" (String.concat ~sep:", " alphabet);
+    Printf.printf "Blank: %s\n" blank;
+    Printf.printf "States: %s\n" (String.concat ~sep:", " states);
+    Printf.printf "Initial: %s\n" initial;
+    Printf.printf "Finals: %s\n" (String.concat ~sep:", " finals);
