@@ -16,8 +16,10 @@ run: $(BIN)
 	$<
 PHONY: run
 
+.ONESHELL:
 $(BIN): $(SOURCE) $(BIN_DIR)
-	ocamlopt -o $@ $(SOURCE) -I $(SRC_DIR)
+	eval `opam env --switch=default`
+	ocamlfind ocamlopt -o $@ -linkpkg -package core -package yojson $(SOURCE) -I $(SRC_DIR)
 
 $(BIN_DIR):
 	mkdir -p $@

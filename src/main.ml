@@ -1,3 +1,4 @@
+
 (*
  	ft_turing _main.ml
  	smiro
@@ -31,7 +32,11 @@ let rec machine t state tape cur =
             )
 
 
+open Core ;;
+open Yojson;;
+
 let () =
+        (*
     let tape = "11111-1111=" in
     let transition = State.empty
     |> State.add ("scanright", '.') ("scanright", '.', Action.Right)
@@ -45,3 +50,7 @@ let () =
     |> State.add ("skip", '.') ("skip", '.', Action.Left)
     |> State.add ("skip", '1') ("scanright", '.', Action.Right) in
         machine transition "scanright" tape 0
+*)
+
+    let json_content = Yojson.Basic.from_file "unary_sub.json" in
+    print_endline (Yojson.Basic.pretty_to_string json_content)

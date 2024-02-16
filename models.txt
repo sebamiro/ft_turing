@@ -1,0 +1,12 @@
+- Program
+- Alphabet (Char)
+	- Blank (Alphabet Char)
+- States
+	- Initial (State)
+	- Finals (States)
+
+- Transistions
+	 (State + Instructions)
+
+- Instructions
+	 (Alphabet Char + State + Alphabet Char + Direction)
