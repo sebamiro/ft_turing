@@ -61,7 +61,9 @@ let () =
     let states = json_content |> member "states" |> to_list |> filter_string in
     let initial = json_content |> member "initial" |> to_string in
     let finals = json_content |> member "finals" |> to_list |> filter_string in
-    let transitions = json_content |> member "transitions" |> to_list in
+
+    let transitions = json_content |> member "transitions" in
+    Printf.printf "\n\nInput:\n";
     print_endline (Yojson.Basic.to_string json_content);
     Printf.printf "\nProgram Name: %s\n" name;
     Printf.printf "Alphabet: %s\n" (String.concat ~sep:", " alphabet);
@@ -69,3 +71,6 @@ let () =
     Printf.printf "States: %s\n" (String.concat ~sep:", " states);
     Printf.printf "Initial: %s\n" initial;
     Printf.printf "Finals: %s\n" (String.concat ~sep:", " finals);
+    Printf.printf "\n\nTransitions:\n";
+    print_endline (Yojson.Basic.to_string transitions);
+    
